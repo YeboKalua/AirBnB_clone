@@ -10,5 +10,3 @@ AUTHORS_FILE="AUTHORS"
 
 # Generate unique authors and emails from Git commit history
 git -C "$REPO_PATH" log '--format=%aN <%aE>' | LC_ALL=C.UTF-8 sort -uf > "$AUTHORS_FILE"
-
-echo "Generated $AUTHORS_FILE"
