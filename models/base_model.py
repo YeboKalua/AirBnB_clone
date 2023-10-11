@@ -27,12 +27,13 @@ class BaseModel():
     created_at = datetime.now()
     updated_at = datetime.now()
 
+    """
     def __init__(self, id=None, created_at=None, updated_at = None):
-        """To initialize class attributes"""
+        To initialize class attributes
         self.id = BaseModel.id
         self.created_at = BaseModel.created_at
         self.updated_at = BaseModel.updated_at
-    
+    """
     def __str__(self):
         """To overwrite"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
