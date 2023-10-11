@@ -35,7 +35,7 @@ class BaseModel():
     
     def __str__(self):
         """To overwrite"""
-        return f"[{self.__class__}] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
     
     def save(self):
         """
@@ -51,7 +51,7 @@ class BaseModel():
         the instance
         """
         dic = {}
-        for key,val in self.__dict__.item():
+        for key,val in self.__dict__.items():
             if key == 'created_at':
                 val1 = val.strftime("%Y-%m-%dT%H:%M:%S.%f")
                 dic[key] = val1
@@ -60,5 +60,5 @@ class BaseModel():
                 dic[key] = val2
             else:
                 dic[key] = val
-        dic[__class__] = self.__class__
+        dic['__class__'] = str(self.__class__.__name__)
         return (dic)
