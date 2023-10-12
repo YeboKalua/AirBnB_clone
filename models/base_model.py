@@ -33,8 +33,8 @@ class BaseModel():
             for keys,vals in kwargs.items():
                 if keys != '__class__':
                     if keys == 'created_at' or keys == 'updated_at' and type(vals) == 'str':
-                        date_format = '%Y, %m, %d, %H, %M, %S, %f'
-                        self.keys = vals.strftime(date_format) 
+                        vals_datetime = datetime.strptime(vals, '%Y-%m-%dT%H:%M:%S.%f')
+                        self.keys = vals_datetime.strftime("datetime.datetime(%Y, %m, %d, %H, %M, %S, %f)")
                     setattr(self, keys, vals)
         else:
             self.id = self.__class__.id
