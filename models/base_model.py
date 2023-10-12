@@ -31,7 +31,7 @@ class BaseModel():
         """To initialize class attributes"""
         if kwargs:
             for keys,vals in kwargs.items():
-                if keys is not '__class__':
+                if keys != '__class__':
                     if keys == 'created_at' or keys == 'updated_at':
                         date_format = '%Y-%m-%dT%H:%M:%S.%f'
                         self.keys = datetime.strptime(vals, date_format) 
