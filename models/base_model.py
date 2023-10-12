@@ -26,14 +26,21 @@ class BaseModel():
     id = str(uuid.uuid4())
     created_at = datetime.now()
     updated_at = datetime.now()
-
-    """
-    def __init__(self, id=None, created_at=None, updated_at = None):
-        To initialize class attributes
-        self.id = BaseModel.id
-        self.created_at = BaseModel.created_at
-        self.updated_at = BaseModel.updated_at
-    """
+    
+    def __init__(self, *args, **kwargs):
+        """To initialize class attributes"""
+        if kwargs:
+            for keys,vals in kwargs.items():
+                if keys is not '__class__':
+                    if keys == 'created_at' or keys == 'updated_at':
+                        date_format = '%Y-%m-%dT%H:%M:%S.%f'
+                        self.keys = datetime.strptime(vals, date_format) 
+                    setattr(self, keys, vals)
+        else:
+            self.id = self.__class__.id
+            self.created_at = self.__class__.created_at
+            self.updated_at = self.__class__.updated_at
+    
     def __str__(self):
         """To overwrite"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
@@ -54,10 +61,10 @@ class BaseModel():
         dic = {}
         for key,val in self.__dict__.items():
             if key == 'created_at':
-                val1 = val.strftime("%Y-%m-%dT%H:%M:%S.%f")
+                val1 = val.isoformat()
                 dic[key] = val1
             elif key == 'updated_at':
-                val2 = val.strftime("%Y-%m-%dT%H:%M:%S.%f")
+                val2 = val.isoformat()
                 dic[key] = val2
             else:
                 dic[key] = val
