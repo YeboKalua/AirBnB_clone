@@ -34,8 +34,10 @@ class BaseModel():
                 if keys != '__class__':
                     if (keys == 'created_at' or keys == 'updated_at') and type(vals) == 'str':
                         vals_datetime = datetime.strptime(vals, '%Y-%m-%dT%H:%M:%S.%f')
-                        setattr(self, keys, vals_datetime)
-                    setattr(self, keys, vals)
+                        new_val = vals_datetime.strftime("datetime.datetime(%Y, %m, %d, %H, %M, %S, %f)")
+                        setattr(self, keys, new_val)
+                    else:
+                        setattr(self, keys, vals)
         else:
             self.id = self.__class__.id
             self.created_at = self.__class__.created_at
