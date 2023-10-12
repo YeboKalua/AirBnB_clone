@@ -32,9 +32,9 @@ class BaseModel():
         if kwargs:
             for keys,vals in kwargs.items():
                 if keys != '__class__':
-                    if (keys == 'created_at' or keys == 'updated_at') and type(vals) == 'str':
-                        vals_datetime = datetime.strptime(vals, '%Y-%m-%dT%H:%M:%S.%f')
-                        setattr(self, keys, vals_datetime)
+                    if keys in ['created_at', 'updated_at'] and isinstance(vals, str):
+                        val_datetime = datetime.strptime(vals, '%Y-%m-%dT%H:%M:%S.%f')
+                        setattr(self, keys, val_datetime)
                     else:
                         setattr(self, keys, vals)
         else:
