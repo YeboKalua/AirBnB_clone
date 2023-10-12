@@ -34,7 +34,7 @@ class BaseModel():
                 if keys != '__class__':
                     if keys == 'created_at' or keys == 'updated_at':
                         date_format = '%Y-%m-%dT%H:%M:%S.%f'
-                        self.keys = datetime.strptime(vals, date_format) 
+                        self.keys = datetime.strftime(vals, date_format) 
                     setattr(self, keys, vals)
         else:
             self.id = self.__class__.id
