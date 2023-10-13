@@ -26,15 +26,12 @@ class BaseModel():
     Example:
 
     """
-    id = str(uuid.uuid4())
-    created_at = datetime.now()
-    updated_at = datetime.now()
     
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
-        self.id = self.__class__.id
-        self.created_at = self.__class__.created_at
-        self.updated_at = self.__class__.updated_at
+        id = str(uuid.uuid4())
+        created_at = datetime.now()
+        updated_at = datetime.now()
         if kwargs:
             for keys,vals in kwargs.items():
                 if keys != '__class__':
@@ -44,7 +41,7 @@ class BaseModel():
                     else:
                         setattr(self, keys, vals)
         else:
-            storage.new(self.to_dict())
+            storage.new(self)
     
     def __str__(self):
         """To overwrite"""
@@ -55,9 +52,8 @@ class BaseModel():
         updates the public instance attribute updated_at with the current
         datetime
         """
-        storage.save()
         self.updated_at = datetime.now()
-        return (self.updated_at)
+        storage.save()
     
     def to_dict(self):
         """ 
@@ -74,5 +70,5 @@ class BaseModel():
                 dic[key] = val2
             else:
                 dic[key] = val
-        dic['__class__'] = str(self.__class__.__name__)
+        dic['__class__'] = self.__class__.__name__
         return (dic)
