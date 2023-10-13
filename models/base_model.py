@@ -32,10 +32,6 @@ class BaseModel():
     
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
-        if 'id' not in kwargs:
-            obj = self.to_dict()
-            storage.new(obj)
-
         if kwargs:
             for keys,vals in kwargs.items():
                 if keys != '__class__':
@@ -48,6 +44,10 @@ class BaseModel():
             self.id = self.__class__.id
             self.created_at = self.__class__.created_at
             self.updated_at = self.__class__.updated_at
+        
+        if 'id' not in kwargs:
+            obj = self.to_dict()
+            storage.new(obj)
     
     def __str__(self):
         """To overwrite"""
