@@ -46,8 +46,7 @@ class BaseModel():
             self.updated_at = self.__class__.updated_at
         
         if 'id' not in kwargs:
-            obj = self.to_dict()
-            storage.new(obj)
+            storage.new(self)
     
     def __str__(self):
         """To overwrite"""
