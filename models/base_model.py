@@ -32,6 +32,9 @@ class BaseModel():
     
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
+        self.id = self.__class__.id
+        self.created_at = self.__class__.created_at
+        self.updated_at = self.__class__.updated_at
         if kwargs:
             for keys,vals in kwargs.items():
                 if keys != '__class__':
@@ -41,11 +44,6 @@ class BaseModel():
                     else:
                         setattr(self, keys, vals)
         else:
-            self.id = self.__class__.id
-            self.created_at = self.__class__.created_at
-            self.updated_at = self.__class__.updated_at
-        
-        if 'id' not in kwargs:
             storage.new(self.to_dict())
     
     def __str__(self):
