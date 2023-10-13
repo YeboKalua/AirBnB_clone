@@ -56,4 +56,4 @@ class FileStorage():
         
         with open(filename, "r") as file:
             json_dic = json.dump(file)
-        return json_dic
+            self.__objects = json_dic
