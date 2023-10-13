@@ -33,7 +33,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
         if 'id' not in kwargs:
-            storage.new()
+            storage.new(self.__class__)
 
         if kwargs:
             for keys,vals in kwargs.items():
