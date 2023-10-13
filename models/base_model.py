@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
+from models import storage
 
 """"
 This modeule contains a base class that contains all
 attributes for other classes
 Author: Nafeesah and Yebo
 """
+
+
 class BaseModel():
     """
     A class which contains all attributes for others.
@@ -29,6 +32,9 @@ class BaseModel():
     
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
+        if 'id' not in kwargs:
+            storage.new()
+
         if kwargs:
             for keys,vals in kwargs.items():
                 if keys != '__class__':
@@ -51,6 +57,7 @@ class BaseModel():
         updates the public instance attribute updated_at with the current
         datetime
         """
+        storage.save()
         self.updated_at = datetime.now()
         return (self.updated_at)
     
