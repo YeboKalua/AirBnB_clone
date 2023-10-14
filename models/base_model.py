@@ -16,36 +16,40 @@ class BaseModel():
     Attributes:
         id(str): identification for each instances
         created_at(date): current datetime when an instance is created
-        updated_at(date): current datetime when an instance is created and updated
+        updated_at(date): current datetime when an instance is updated
 
     Methods:
-        save(): updates the public instance attribute updated_at with the current datetime
+        save(): updates updated_at with the current datetime
         to_dict(): returns a dictionary containing all keys/values of __dict__
 
     Example:
 
     """
-    
+
     def __init__(self, *args, **kwargs):
         """To initialize class attributes"""
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         if kwargs:
-            for keys,vals in kwargs.items():
+            for keys, vals in kwargs.items():
                 if keys != '__class__':
-                    if keys in ['created_at', 'updated_at'] and isinstance(vals, str):
-                        val_datetime = datetime.strptime(vals, '%Y-%m-%dT%H:%M:%S.%f')
+                    if(
+                            keys in ['created_at', 'updated_at']
+                            and isinstance(vals, str)
+                    ):
+                        form = '%Y-%m-%dT%H:%M:%S.%f'
+                        val_datetime = datetime.strptime(vals, form)
                         setattr(self, keys, val_datetime)
                     else:
                         setattr(self, keys, vals)
         else:
             models.storage.new(self)
-    
+
     def __str__(self):
         """To overwrite"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
-    
+
     def save(self):
         """
         updates the public instance attribute updated_at with the current
@@ -53,14 +57,14 @@ class BaseModel():
         """
         self.updated_at = datetime.now()
         models.storage.save()
-    
+
     def to_dict(self):
-        """ 
-        returns a dictionary containing all keys/values of __dict__ of 
+        """
+        returns a dictionary containing all keys/values of __dict__ of
         the instance
         """
         dic = {}
-        for key,val in self.__dict__.items():
+        for key, val in self.__dict__.items():
             if key == 'created_at' or key == 'updated_at':
                 dic[key] = val.isoformat()
             else:
