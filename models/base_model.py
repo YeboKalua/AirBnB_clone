@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
-from models import storage
-
+import models
 """"
 This modeule contains a base class that contains all
 attributes for other classes
@@ -41,7 +40,7 @@ class BaseModel():
                     else:
                         setattr(self, keys, vals)
         else:
-            storage.new(self)
+            models.storage.new(self)
     
     def __str__(self):
         """To overwrite"""
@@ -53,7 +52,7 @@ class BaseModel():
         datetime
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
     
     def to_dict(self):
         """ 
