@@ -53,7 +53,7 @@ class BaseModel():
         datetime
         """
         self.updated_at = datetime.now()
-        storage.save()
+        storage.save(self.__class__)
     
     def to_dict(self):
         """ 
@@ -62,12 +62,8 @@ class BaseModel():
         """
         dic = {}
         for key,val in self.__dict__.items():
-            if key == 'created_at':
-                val1 = val.isoformat()
-                dic[key] = val1
-            elif key == 'updated_at':
-                val2 = val.isoformat()
-                dic[key] = val2
+            if key == 'created_at' or key == 'updated_at':
+                dic[key] = val.isoformat()
             else:
                 dic[key] = val
         dic['__class__'] = self.__class__.__name__
