@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from models.base_model import BaseModel
 import json
 import os
 
@@ -47,7 +48,7 @@ class FileStorage():
         with open(filename, "w") as file:
             objects_dict = {}
             for key, value in self.__objects.items():
-                objects_dict[key] = FileStorage.__objects[key].to_dict()
+                objects_dict[key] = self.__objects[key].to_dict()
             json.dump(objects_dict, file)
 
     
@@ -59,5 +60,10 @@ class FileStorage():
             return
         
         with open(filename, "r") as file:
-            json_dic = json.load(file)
-            self.__objects = json_dic
+            content = file.read()
+            if content is None:
+                return
+            objects_dict = json.loads(content)
+            self.__objects = {}
+            for key, value in objects_dict.items():
+                self.__objects[key] = BaseModel(**objects_dict[key])
