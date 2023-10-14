@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-import cmd
+
 
 """
 This module is for the console
 to create interactive and non-interactive mode
 Author: Yebo and Nafeesah
 """
+
+
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
