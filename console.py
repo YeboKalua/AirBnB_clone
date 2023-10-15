@@ -99,14 +99,15 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in class_name:
             print("** class doesn't exist **")
         else:
-            class_rep = args[0] + "." + args[1]
-            for keys, vals in storage.all().items():
-                if class_rep == keys:
-                    storage.remove(keys)
-                    storage.save()
-                    del vals
-                else:
-                    print("** no instance found **")
+            classname = args[0]
+            instance_id = args[1]
+            instance_key = f"{classname}.{instance_id}"
+            if instance_key not in storage.all():
+                print("** no instance found **")
+                return
+            
+            del storage.all()[instance_key]
+            storage.save()
 
     def help_destroy(self):
         """Displays what destroy does"""
