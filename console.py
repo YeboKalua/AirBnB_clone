@@ -156,8 +156,11 @@ class HBNBCommand(cmd.Cmd):
                 return
             
             instance = storage.all()[instance_key]
-            set_attr = type(getattr(instance, attribute_name))(args[3])
-            setattr(instance, attribute_name, set_attr)
+            if attribute_name not in instance.to_dict():
+                setattr(instance, attribute_name, args[3])
+            else:
+                set_attr = type(getattr(instance, attribute_name))(args[3])
+                setattr(instance, attribute_name, set_attr)
             storage.save()
 
     def help_update(self):
