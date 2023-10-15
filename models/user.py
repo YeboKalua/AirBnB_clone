@@ -22,6 +22,7 @@ class User(BaseModel):
     Methods:
         None
     """
+
     email = ""
     password = ""
     first_name = ""
