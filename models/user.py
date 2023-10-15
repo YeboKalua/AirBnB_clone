@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-
+"""to import basemodel"""
+from models.base_model import BaseModel
 """
 This module contains the class User.
 It contains users attributes
 Author: Nafeesah and Yebo
 """
-
-from models.base_model import BaseModel
 
 
 class User(BaseModel):
