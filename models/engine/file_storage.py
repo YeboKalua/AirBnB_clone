@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-from models.base_model import BaseModel
-import json
-import os
 
 """
 This module contains function that
 serializes and deserializes to store data created by users
 Author: Nafeesah and Yebo
 """
+
+from models.base_model import BaseModel
+from models.user import User
+import json
+import os
 
 
 class FileStorage():
@@ -65,4 +67,7 @@ class FileStorage():
             objects_dict = json.loads(content)
             self.__objects = {}
             for key, value in objects_dict.items():
+                if key == 'User':
+                    self.__objects[key] = User(**objects_dict[key])
+                    continue
                 self.__objects[key] = BaseModel(**objects_dict[key])

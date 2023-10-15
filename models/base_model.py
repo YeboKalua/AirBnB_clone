@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-import uuid
-from datetime import datetime
-import models
+
 """"
 This modeule contains a base class that contains all
 attributes for other classes
 Author: Nafeesah and Yebo
 """
+
+import uuid
+from datetime import datetime
+import models
 
 
 class BaseModel():

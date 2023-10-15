@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 
-
 """
 This module is for the console
 to create interactive and non-interactive mode
 Author: Yebo and Nafeesah
 """
 
-
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
+
 
 class_name = [
-    'BaseModel'
+    'BaseModel', 'User'
 ]
 class HBNBCommand(cmd.Cmd):
     """
@@ -55,10 +55,12 @@ class HBNBCommand(cmd.Cmd):
         elif command not in class_name:
             print("** class doesn't exist **")
         else:
-            if command == "BaseModel":
+            if command == class_name[0]:
                 instance = BaseModel()
-                instance.save()
-                print("{}".format(instance.id))
+            if command == class_name[1]:
+                instance = User()
+            instance.save()
+            print("{}".format(instance.id))
 
     def help_create(self):
         """Displays what create does"""
