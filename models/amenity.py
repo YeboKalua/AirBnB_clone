@@ -2,14 +2,14 @@
 """to import basemodel"""
 from models.base_model import BaseModel
 """
-This module contains the class State.
-It contains state attributes
+This module contains the class amenity.
+It contains amenity attributes
 Author: Nafeesah and Yebo
 """
 
-class State(BaseModel):
+class Amenity(BaseModel):
     """
-    A class that contains the details of state.
+    A class that contains the details of amenity.
 
     Attributes:
         name(str): empty string

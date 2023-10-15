@@ -1,19 +1,23 @@
 #!/usr/bin/python3
-
+"""To import necessary libraries"""
+import cmd
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
 """
 This module is for the console
 to create interactive and non-interactive mode
 Author: Yebo and Nafeesah
 """
 
-import cmd
-from models import storage
-from models.base_model import BaseModel
-from models.user import User
-
 
 class_name = [
-    'BaseModel', 'User'
+    'BaseModel', 'User', 'State', 'Review', 'Place', 'City', 'Amenity'
 ]
 class HBNBCommand(cmd.Cmd):
     """
@@ -59,6 +63,16 @@ class HBNBCommand(cmd.Cmd):
                 instance = BaseModel()
             if command == class_name[1]:
                 instance = User()
+            if command == class_name[1]:
+                instance = State()
+            if command == class_name[1]:
+                instance = Review()
+            if command == class_name[1]:
+                instance = Place()
+            if command == class_name[1]:
+                instance = City()
+            if command == class_name[1]:
+                instance = Amenity()
             instance.save()
             print("{}".format(instance.id))
 

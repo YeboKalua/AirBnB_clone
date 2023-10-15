@@ -1,15 +1,19 @@
 #!/usr/bin/python3
-
+"""To import necessary modules"""
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
+import json
+import os
 """
 This module contains function that
 serializes and deserializes to store data created by users
 Author: Nafeesah and Yebo
 """
-
-from models.base_model import BaseModel
-from models.user import User
-import json
-import os
 
 
 class FileStorage():
@@ -69,5 +73,20 @@ class FileStorage():
             for key, value in objects_dict.items():
                 if 'User' in key:
                     self.__objects[key] = User(**objects_dict[key])
+                    continue
+                elif 'State' in key:
+                    self.__objects[key] = State(**objects_dict[key])
+                    continue
+                elif 'Review' in key:
+                    self.__objects[key] = Review(**objects_dict[key])
+                    continue
+                elif 'Place' in key:
+                    self.__objects[key] = Place(**objects_dict[key])
+                    continue
+                elif 'City' in key:
+                    self.__objects[key] = City(**objects_dict[key])
+                    continue
+                elif 'Amenity' in key:
+                    self.__objects[key] = Amenity(**objects_dict[key])
                     continue
                 self.__objects[key] = BaseModel(**objects_dict[key])
