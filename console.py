@@ -120,14 +120,11 @@ class HBNBCommand(cmd.Cmd):
         if args[0] != "" and args[0] not in class_name:
             print("** class doesn't exist **")
         else:
-            all_list = []
-            obj = storage.all()
-            for keys, vals in obj.items():
-                if args[0] == "":
-                    all_list.append(str(vals))
-                    continue
-                if args[0] == keys[:len(args[0])]:
-                    all_list.append(str(vals))
+            class_filter = args[0] if args[0] else None
+            all_list = [
+                str(vals) for key, vals in storage.all().items()
+                if not class_filter or key.startswith(class_filter)
+                ]
             print(all_list)
 
     def help_all(self):
