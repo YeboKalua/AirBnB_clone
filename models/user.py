@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This module contains the class User
+This module contains the class User.
+It contains users attributes
 Author: Nafeesah and Yebo
 """
 
