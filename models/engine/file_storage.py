@@ -67,7 +67,7 @@ class FileStorage():
             objects_dict = json.loads(content)
             self.__objects = {}
             for key, value in objects_dict.items():
-                if key == 'User':
+                if 'User' in key:
                     self.__objects[key] = User(**objects_dict[key])
                     continue
                 self.__objects[key] = BaseModel(**objects_dict[key])
