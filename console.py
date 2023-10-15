@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             classname = args[0]
             instance_id = args[1]
-            instance_key = f"{classname}.{instance_id}"
+            instance_key = "{}.{}".format(classname, instance_id)
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             classname = args[0]
             instance_id = args[1]
-            instance_key = f"{classname}.{instance_id}"
+            instance_key = "{}.{}".format(classname, instance_id)
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             classname = args[0]
             instance_id = args[1]
             attribute_name = args[2]
-            instance_key = f"{classname}.{instance_id}"
+            instance_key = "{}.{}".format(classname, instance_id)
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
