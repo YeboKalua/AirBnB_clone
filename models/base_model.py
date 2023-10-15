@@ -48,7 +48,7 @@ class BaseModel():
 
     def __str__(self):
         """To overwrite"""
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return "[" + self.__class__.__name__ + "] (" + self.id + ") " + str(self.__dict__)
 
     def save(self):
         """

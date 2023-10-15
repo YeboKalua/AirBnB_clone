@@ -57,9 +57,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             if command == "BaseModel":
                 instance = BaseModel()
-        
-        instance.save()
-        print("{}".format(instance.id))
+                instance.save()
+                print("{}".format(instance.id))
 
     def help_create(self):
         """Displays what create does"""
