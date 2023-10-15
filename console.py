@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
                 instance = BaseModel()
         
         instance.save()
-        print(instance.id)
+        print("{}".format(instance.id))
 
     def help_create(self):
         """Displays what create does"""
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
-            print(storage.all()[instance_key])
+            print("{}".format(storage.all()[instance_key]))
 
     def help_show(self):
         """Displays what show does"""
@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
                 str(vals) for key, vals in storage.all().items()
                 if not class_filter or key.startswith(class_filter)
                 ]
-            print(all_list)
+            print("{}".format(all_list))
 
     def help_all(self):
         """Displays what all does"""
