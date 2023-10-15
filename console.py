@@ -147,10 +147,10 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 4:
             print("** value missing **")
         else:
-            class_name = args[0]
+            classname = args[0]
             instance_id = args[1]
             attribute_name = args[2]
-            instance_key = f"{class_name}.{instance_id}"
+            instance_key = f"{classname}.{instance_id}"
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
