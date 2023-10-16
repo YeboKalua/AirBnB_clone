@@ -63,17 +63,17 @@ class HBNBCommand(cmd.Cmd):
         else:
             if command == class_name[0]:
                 instance = BaseModel()
-            if command == class_name[1]:
+            elif command == class_name[1]:
                 instance = User()
-            if command == class_name[1]:
+            elif command == class_name[2]:
                 instance = State()
-            if command == class_name[1]:
+            elif command == class_name[3]:
                 instance = Review()
-            if command == class_name[1]:
+            elif command == class_name[4]:
                 instance = Place()
-            if command == class_name[1]:
+            elif command == class_name[5]:
                 instance = City()
-            if command == class_name[1]:
+            elif command == class_name[6]:
                 instance = Amenity()
             instance.save()
             print("{}".format(instance.id))
