@@ -36,7 +36,7 @@ class BaseModel():
         if kwargs:
             for keys, vals in kwargs.items():
                 if keys != '__class__':
-                    if(
+                    if (
                             keys
                             in ['created_at', 'updated_at']
                             and isinstance(vals, str)
