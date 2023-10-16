@@ -7,6 +7,7 @@ It contains review attributes
 Author: Nafeesah and Yebo
 """
 
+
 class Review(BaseModel):
     """
     A class that contains the details of review.

@@ -7,6 +7,7 @@ It contains amenity attributes
 Author: Nafeesah and Yebo
 """
 
+
 class Amenity(BaseModel):
     """
     A class that contains the details of amenity.

@@ -7,6 +7,7 @@ It contains Place attributes
 Author: Nafeesah and Yebo
 """
 
+
 class Place(BaseModel):
     """
     A class that contains the details of a Place.

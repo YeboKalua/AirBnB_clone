@@ -19,6 +19,8 @@ Author: Yebo and Nafeesah
 class_name = [
     'BaseModel', 'User', 'State', 'Review', 'Place', 'City', 'Amenity'
 ]
+
+
 class HBNBCommand(cmd.Cmd):
     """
     This is the class for the console.
@@ -52,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    def do_create(self,command):
+    def do_create(self, command):
         """Creates a new instance of BaseModel"""
         if command == "":
             print("** class name missing **")
@@ -79,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
     def help_create(self):
         """Displays what create does"""
         print("Creates a new instance of a class\n")
-    
+
     def do_show(self, command):
         """Prints the string representation of an instance """
         args = command.split(" ")
@@ -102,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
     def help_show(self):
         """Displays what show does"""
         print("Shows an instance of a class\n")
-    
+
     def do_destroy(self, command):
         """Destroys an instance of a class"""
         args = command.split(" ")
@@ -120,7 +122,6 @@ class HBNBCommand(cmd.Cmd):
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
-            
             del storage.all()[instance_key]
             storage.save()
 
@@ -167,7 +168,7 @@ class HBNBCommand(cmd.Cmd):
             if instance_key not in storage.all():
                 print("** no instance found **")
                 return
-            
+
             instance = storage.all()[instance_key]
             if attribute_name not in instance.to_dict():
                 setattr(instance, attribute_name, args[3])
@@ -179,6 +180,7 @@ class HBNBCommand(cmd.Cmd):
     def help_update(self):
         """Displays what update does"""
         print("Updates instances of a class\n")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

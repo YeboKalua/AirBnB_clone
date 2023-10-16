@@ -7,6 +7,7 @@ It contains city attributes.
 Author: Nafeesah and Yebo
 """
 
+
 class City(BaseModel):
     """
     A class that contains the details of city.

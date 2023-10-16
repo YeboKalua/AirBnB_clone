@@ -7,6 +7,7 @@ It contains state attributes
 Author: Nafeesah and Yebo
 """
 
+
 class State(BaseModel):
     """
     A class that contains the details of state.
