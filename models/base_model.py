@@ -37,7 +37,8 @@ class BaseModel():
             for keys, vals in kwargs.items():
                 if keys != '__class__':
                     if(
-                            keys in ['created_at', 'updated_at']
+                            keys
+                            in ['created_at', 'updated_at']
                             and isinstance(vals, str)
                     ):
                         form = '%Y-%m-%dT%H:%M:%S.%f'
